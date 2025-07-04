@@ -8,14 +8,14 @@
 
 ---
 
-## 🚀 What is YanAPI?
+## What is YanAPI?
 
 **YanAPI** is a modular, high-performance modding API designed for **Yandere Simulator**, built on top of **BepInEx**.  
 It provides a robust foundation for creating powerful, stable, and extensible mods with clean APIs, wrappers, and quality-of-life improvements.
 
 ---
 
-## 📦 Current Features & Status
+## Current Features & Status
 
 | Feature                    | Status        | Description                                         |
 |---------------------------|---------------|-----------------------------------------------------|
