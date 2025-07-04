@@ -1,7 +1,13 @@
 # YanAPI - A BepInEx Yandere Simulator Modding API
 
-<h1>
-  <span style="background-color: orange; color: black; padding: 4px 8px; border-radius: 4px;">
-    DISCLAIMER: YanAPI is in early release and may be unstable
-  </span>
-</h1>
+# DISCLAIMER: YanAPI is in early release and may be unstable
+
+## Current YanAPI Features:
+
+Logging API - Mostly complete
+Wrapper System - Incomplete
+SDK - Not Started
+Button API - Incomplete
+NPC API - Not Started
+Item API - Not Started
+QOL/Performance Improvements - Incomplete
