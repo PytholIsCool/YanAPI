@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YanAPI;
 using YanAPI.Logging;
 using YanAPI.Patches;
 using YanAPI.UI.MainMenu;
@@ -19,7 +20,7 @@ public class YanAPICore : BaseUnityPlugin {
             return;
         }
 
-        CLogs.LogInfo("No dupes found! Initializing YanAPI...");
+        CLogs.LogInfo("No dupes found! Initializing YanAPI.Core...");
 
         CLogs.LogInfo("Applying patches...");
         YanAPIPatchManager.PatchAll();
@@ -27,32 +28,24 @@ public class YanAPICore : BaseUnityPlugin {
         Instance = this;
         DontDestroyOnLoad(this);
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
 
-        CLogs.LogInfo("YanAPI has been initialized successfully!");
+        CLogs.LogInfo("YanAPI.Core has been initialized successfully!");
+        CLogs.LogInfo("Initializing modules...");
 
-        GameWrapper.OnNewGameSelected += () => {
-            CLogs.LogInfo("New game/Load game selected.");
-        };
+        GameSceneWrapper.Init();
+        MainMenuUIBase.Init();
 
-        GameWrapper.OnSettingsSelected += () => {
-            CLogs.LogInfo("Settings selected.");
-        };
+        CLogs.LogInfo("All modules initialized!");
+        CLogs.LogInfo("Finalizing YanAPI.Core setup...");
+
+        SceneManager.sceneLoaded += (scene, loadSceneMode) => CLogs.LogDebug($"Scene loaded: {scene.name} in mode {loadSceneMode}.");
+        SceneManager.sceneUnloaded += (scene) => CLogs.LogDebug($"Scene unloaded: {scene.name}.");
+
+        CLogs.LogInfo("YanAPI.Core initialized successfully!");
+
+        APIExamples.Load();
     }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
-        CLogs.Log($"[YanAPI] Scene loaded: \"{scene.name}\" in mode \"{loadSceneMode}\"".ConvertToANSI(185, 160, 255));
-        if (GameWrapper.IsInMainMenu()) {
-            CLogs.LogInfo("Main menu scene detected. Initializing MMUI module...");
-            MMUIModuleBase.Init();
-        }
-    }
-
-    private void OnSceneUnloaded(Scene scene) {
-        CLogs.Log($"[YanAPI] Scene unloaded: \"{scene.name}\"".ConvertToANSI(185, 160, 255));
-    }
-
+    
     private void OnDestroy() {
         if (Instance == this) {
             Instance = null;

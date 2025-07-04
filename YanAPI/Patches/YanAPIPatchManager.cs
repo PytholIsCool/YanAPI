@@ -2,9 +2,10 @@
 
 namespace YanAPI.Patches; 
 internal static class YanAPIPatchManager {
-    public static void PatchAll() {
+    internal static void PatchAll() {
         NewTitleScreenScriptPatches.Apply();
         NewSettingsScriptPatches.Apply();
+        InputManagerScriptPatches.Apply();
         CLogs.LogInfo("All patches applied successfully.");
     }
 }

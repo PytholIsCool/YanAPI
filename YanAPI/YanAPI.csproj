@@ -57,9 +57,6 @@
     <Reference Include="BepInEx.Core">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\YandereSimulator\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\YandereSimulator\YandereSimulator_Data\Managed\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\YandereSimulator\YandereSimulator_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
@@ -74,6 +71,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\YandereSimulator\YandereSimulator_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\YandereSimulator\YandereSimulator_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\YandereSimulator\YandereSimulator_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -84,23 +85,30 @@
   </ItemGroup>
   <!-- Source Code Files -->
   <ItemGroup>
+    <Compile Include="APIExamples.cs" />
     <Compile Include="Logging\CLogs.cs" />
+    <Compile Include="Patches\InputManagerScriptPatches.cs" />
     <Compile Include="Patches\NewSettingsScriptPatches.cs" />
     <Compile Include="Patches\NewTitleScreenScriptPatches.cs" />
     <Compile Include="Patches\YanAPIPatchManager.cs" />
+    <Compile Include="UI\Base\Assets\Fonts.cs" />
+    <Compile Include="UI\Base\Page.cs" />
     <Compile Include="UI\Base\Root.cs" />
-    <Compile Include="UI\MainMenu\Controls\YanButton.cs" />
+    <Compile Include="UI\MainMenu\Controls\YanLabel.cs" />
     <Compile Include="UI\MainMenu\Controls\YanPage.cs" />
-    <Compile Include="UI\MainMenu\MMUIModuleBase.cs" />
+    <Compile Include="UI\MainMenu\MainMenuUIBase.cs" />
     <Compile Include="UI\MainMenu\Popups\Popup.cs" />
     <Compile Include="UI\MainMenu\Popups\PromptBar.cs" />
     <Compile Include="plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\ObjectExtensions.cs" />
-    <Compile Include="Utils\UnityExtensions.cs" />
+    <Compile Include="Utils\Extensions\ImageUtils.cs" />
+    <Compile Include="Utils\Extensions\ObjectExtensions.cs" />
+    <Compile Include="Utils\Extensions\UnityExtensions.cs" />
     <Compile Include="Wrappers\GameWrapper.cs" />
+    <Compile Include="Wrappers\InputWrapper.cs" />
     <Compile Include="Wrappers\NPCWrapper.cs" />
     <Compile Include="Wrappers\PlayerWrapper.cs" />
+    <Compile Include="Wrappers\GameSceneWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UI\Bedroom\" />
@@ -112,6 +120,6 @@
   <PropertyGroup>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Y /I "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\YandereSimulator\BepInEx\plugins\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /Y /I "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\YandereSimulator\BepInEx\plugins\pythol-YanAPI\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

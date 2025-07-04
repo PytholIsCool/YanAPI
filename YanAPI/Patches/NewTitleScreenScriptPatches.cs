@@ -4,16 +4,33 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YanAPI.Logging;
+using YanAPI.UI.MainMenu;
 using YanAPI.Wrappers;
 
 namespace YanAPI.Patches;
 public static class NewTitleScreenScriptPatches {
+
+#nullable enable
+    public static NewTitleScreenScript? NewTitleScreenScriptInstance { get; private set; }
+#nullable disable
+
     internal static void Apply() {
         var harmony = new Harmony("YanAPI.NewTitleScreenScriptPatches");
 
+        harmony.Patch(AccessTools.Method(typeof(NewTitleScreenScript), "Start"), postfix: new(typeof(NewTitleScreenScriptPatches), nameof(Start)));
         harmony.Patch(AccessTools.Method(typeof(NewTitleScreenScript), "Update"), prefix: new(typeof(NewTitleScreenScriptPatches), nameof(Update)));
         CLogs.LogInfo("NewTitleScreenScript.Update patch applied successfully.");
     }
+
+    #region Start
+
+    private static void Start(NewTitleScreenScript __instance) {
+        MainMenuUIBase.OnMainMenuUIIsReady += () => {
+            // TODO: Remake the in-game UI on the main menu panel
+        };
+    }
+
+    #endregion
 
     #region Update
 
@@ -38,6 +55,8 @@ public static class NewTitleScreenScriptPatches {
     private static readonly MethodInfo setEightiesVariables = AccessTools.Method(typeof(NewTitleScreenScript), "SetEightiesVariables");
 
     private static bool Update(NewTitleScreenScript __instance) {
+        NewTitleScreenScriptInstance ??= __instance;
+
         if (__instance.Frame == 1) {
             if (__instance.Eighties)
                 enableEightiesEffects?.Invoke(__instance, null);
@@ -94,7 +113,7 @@ public static class NewTitleScreenScriptPatches {
 
         // Muting the music
         if (Input.GetKeyDown("m"))
-            i.CurrentJukebox.volume = 0f;
+            i.CurrentJukebox.volume = i.CurrentJukebox.volume == 0 ? 1f : 0f;
     }
 
     private static void HandleCursor(NewTitleScreenScript i) {
