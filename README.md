@@ -34,9 +34,6 @@ It provides a robust foundation for creating powerful, stable, and extensible mo
 <h3 align="center">
   <span padding: 6px 12px; border-radius: 6px; font-weight: bold;">
     Join The Discord!
-  </span>
-
-  <span padding: 6px 12px; border-radius: 6px; font-weight: bold;">
     https://discord.gg/fhYcr8kzwx
   </span>
 </h3>
