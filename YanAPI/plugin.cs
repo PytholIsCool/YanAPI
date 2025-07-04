@@ -43,7 +43,7 @@ public class YanAPICore : BaseUnityPlugin {
 
         CLogs.LogInfo("YanAPI.Core initialized successfully!");
 
-        APIExamples.Load();
+        // APIExamples.Load();
     }
     
     private void OnDestroy() {
