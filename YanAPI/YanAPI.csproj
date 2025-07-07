@@ -67,6 +67,10 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\YandereSimulator\YandereSimulator_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\YandereSimulator\YandereSimulator_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\YandereSimulator\YandereSimulator_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
@@ -86,34 +90,54 @@
   <!-- Source Code Files -->
   <ItemGroup>
     <Compile Include="APIExamples.cs" />
+    <Compile Include="Core\Cache\CacheProperties.cs" />
+    <Compile Include="Core\YanAPICore.cs" />
     <Compile Include="Logging\CLogs.cs" />
-    <Compile Include="Patches\InputManagerScriptPatches.cs" />
-    <Compile Include="Patches\NewSettingsScriptPatches.cs" />
-    <Compile Include="Patches\NewTitleScreenScriptPatches.cs" />
-    <Compile Include="Patches\YanAPIPatchManager.cs" />
-    <Compile Include="UI\Base\Assets\Fonts.cs" />
-    <Compile Include="UI\Base\Page.cs" />
-    <Compile Include="UI\Base\Root.cs" />
-    <Compile Include="UI\MainMenu\Controls\YanLabel.cs" />
-    <Compile Include="UI\MainMenu\Controls\YanPage.cs" />
-    <Compile Include="UI\MainMenu\MainMenuUIBase.cs" />
-    <Compile Include="UI\MainMenu\Popups\Popup.cs" />
-    <Compile Include="UI\MainMenu\Popups\PromptBar.cs" />
+    <Compile Include="Logging\Internal\LogColorManager.cs" />
+    <Compile Include="Logging\Internal\LogDispatcher.cs" />
+    <Compile Include="Logging\Internal\LogFormatter.cs" />
+    <Compile Include="Logging\Internal\LogInitializer.cs" />
+    <Compile Include="Logging\Internal\LogLevelParser.cs" />
+    <Compile Include="Logging\Internal\LogProperties.cs" />
+    <Compile Include="Logging\Internal\LogSettings.cs" />
+    <Compile Include="Modules\Hooks\HookManager.cs" />
+    <Compile Include="Modules\Hooks\Patches\InputPatch.cs" />
+    <Compile Include="Modules\Hooks\Patches\SettingsPatch.cs" />
+    <Compile Include="Modules\Hooks\Patches\MMPatch.cs" />
+    <Compile Include="Modules\Inputs\InputAction.cs" />
+    <Compile Include="Modules\Inputs\InputBinder.cs" />
+    <Compile Include="Modules\Inputs\InputBinding.cs" />
+    <Compile Include="Modules\Inputs\InputWrapper.cs" />
+    <Compile Include="Modules\UI\Base\Core\CursorManager.cs" />
+    <Compile Include="Modules\UI\Base\Core\UIAssetManager.cs" />
+    <Compile Include="Modules\UI\Base\Core\Fonts.cs" />
+    <Compile Include="Modules\UI\Base\Core\Textures.cs" />
+    <Compile Include="Modules\UI\Base\Page.cs" />
+    <Compile Include="Modules\UI\Base\Root.cs" />
+    <Compile Include="Modules\UI\Controls\Popups\PopupManager.cs" />
+    <Compile Include="Modules\UI\Controls\Popups\PromptBarManager.cs" />
+    <Compile Include="Modules\UI\Controls\YanLabelControl\YanLabelBase.cs" />
+    <Compile Include="Modules\UI\Controls\YanPageControl\YanPageBase.cs" />
+    <Compile Include="Modules\UI\Controls\YanPageControl\YanPageComponent.cs" />
+    <Compile Include="Modules\UI\Controls\YanPageControl\YanPageControls.cs" />
+    <Compile Include="Modules\UI\Controls\YanPageControl\YanPageCursor.cs" />
+    <Compile Include="Modules\UI\Controls\YanPageControl\YanPageGrid.cs" />
+    <Compile Include="Modules\UI\Scenes\BedroomUIBase.cs" />
+    <Compile Include="Modules\UI\Scenes\MainMenu\MMUIBase.cs" />
+    <Compile Include="Modules\UI\Scenes\MainMenu\MMUIWidgets.cs" />
+    <Compile Include="Modules\UI\Scenes\SchoolUIBase.cs" />
+    <Compile Include="Modules\UI\Scenes\UniUIBase.cs" />
+    <Compile Include="Modules\Utils\Extensions\ImageUtils.cs" />
+    <Compile Include="Modules\Utils\Extensions\ObjectExtensions.cs" />
+    <Compile Include="Modules\Utils\Extensions\UnityExtensions.cs" />
     <Compile Include="plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\Extensions\ImageUtils.cs" />
-    <Compile Include="Utils\Extensions\ObjectExtensions.cs" />
-    <Compile Include="Utils\Extensions\UnityExtensions.cs" />
     <Compile Include="Wrappers\GameWrapper.cs" />
-    <Compile Include="Wrappers\InputWrapper.cs" />
     <Compile Include="Wrappers\NPCWrapper.cs" />
     <Compile Include="Wrappers\PlayerWrapper.cs" />
     <Compile Include="Wrappers\GameSceneWrapper.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\Bedroom\" />
-    <Folder Include="UI\School\" />
-  </ItemGroup>
+  <ItemGroup />
   <!-- Include Setup.exe in Solution Explorer -->
   <!-- Required build target -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,16 +1,12 @@
 ﻿using BepInEx;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using YanAPI;
+using YanAPI.Core;
 using YanAPI.Logging;
-using YanAPI.Patches;
-using YanAPI.UI.MainMenu;
-using YanAPI.Utils;
-using YanAPI.Wrappers;
 
 [BepInPlugin("com.Pythol.YanAPI", "YanAPI", "1.0.0")]
-public class YanAPICore : BaseUnityPlugin {
-    public static YanAPICore Instance { get; private set; }
+public class YanAPIEntry : BaseUnityPlugin {
+    public static YanAPIEntry Instance { get; private set; }
     private void Awake() {
         CLogs.LogInfo("YanAPI loaded. Checking for dupes...");
 
@@ -20,30 +16,14 @@ public class YanAPICore : BaseUnityPlugin {
             return;
         }
 
-        CLogs.LogInfo("No dupes found! Initializing YanAPI.Core...");
-
-        CLogs.LogInfo("Applying patches...");
-        YanAPIPatchManager.PatchAll();
-
         Instance = this;
-        DontDestroyOnLoad(this);
 
+        CLogs.LogInfo("No dupes found! Initializing YanAPI.Core...");
+        GameObject core = new("YanAPICore");
+        DontDestroyOnLoad(core);
+        core.AddComponent<YanAPICore>();
 
-        CLogs.LogInfo("YanAPI.Core has been initialized successfully!");
-        CLogs.LogInfo("Initializing modules...");
-
-        GameSceneWrapper.Init();
-        MainMenuUIBase.Init();
-
-        CLogs.LogInfo("All modules initialized!");
-        CLogs.LogInfo("Finalizing YanAPI.Core setup...");
-
-        SceneManager.sceneLoaded += (scene, loadSceneMode) => CLogs.LogDebug($"Scene loaded: {scene.name} in mode {loadSceneMode}.");
-        SceneManager.sceneUnloaded += (scene) => CLogs.LogDebug($"Scene unloaded: {scene.name}.");
-
-        CLogs.LogInfo("YanAPI.Core initialized successfully!");
-
-        // APIExamples.Load();
+        APIExamples.Load();
     }
     
     private void OnDestroy() {
