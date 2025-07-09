@@ -19,7 +19,7 @@ It provides a robust foundation for creating powerful, stable, and extensible mo
 
 | Feature                    | Status        | Description                                         |
 |---------------------------|---------------|-----------------------------------------------------|
-| ✅ Logging API            | Mostly Complete | Structured logging with debug/info/error levels.    |
+| ✅ Logging API            | Complete    | Structured logging with debug/info/error levels.    |
 | 🧠 Wrapper System         | In Progress    | Abstractions over in-game functions and data.       |
 | 🧰 SDK                    | Not Started    | Developer tools for exposing game internals.        |
 | 🔘 Button API             | In Progress    | Custom UI button system for mod menus.              |
