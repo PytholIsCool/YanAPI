@@ -32,27 +32,32 @@ It provides a robust foundation for creating powerful, stable, and extensible mo
       <td>Structured logging with debug/info/error levels.</td>
     </tr>
     <tr>
-      <td>🧠 Wrapper System</td>
+      <td>🛠️ Wrapper Module</td>
       <td>In Progress</td>
       <td>Abstractions over in-game functions and data.</td>
     </tr>
     <tr>
-      <td>🧰 SDK</td>
+      <td>🔴 SDK</td>
       <td>Not Started</td>
       <td>Developer tools for exposing game internals.</td>
     </tr>
     <tr>
-      <td>🔘 Button API</td>
+      <td>🛠️ UI Module</td>
       <td>In Progress</td>
       <td>Custom UI button system for mod menus.</td>
     </tr>
     <tr>
-      <td>🧍 NPC API</td>
+      <td>🔴 NPC Module</td>
       <td>Not Started</td>
       <td>Control and extend NPC behaviors and interactions.</td>
     </tr>
     <tr>
-      <td>🎒 Item API</td>
+      <td>🛠️ Inputs Module</td>
+      <td>Mostly Complete - Undergoing Rewrite</td>
+      <td>Framework for managing inputs more intuitively.</td>
+    </tr>
+    <tr>
+      <td>🔴 Item Module</td>
       <td>Not Started</td>
       <td>Framework for creating and managing custom items.</td>
     </tr>
